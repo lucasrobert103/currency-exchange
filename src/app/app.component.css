@@ -1,0 +1,17 @@
+.exchange button{
+  width: 33rem;
+  height: 4.8rem;
+
+  background: #07B0FB;
+  border-radius: 100px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+
+.pair{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #07B0FB;
+}

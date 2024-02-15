@@ -1,0 +1,48 @@
+<div class="container">
+  <!-- Exibição da taxa de câmbio atual -->
+  <div class="border d-flex justify-content-center align-items-center mt-5 valueAtual">
+    <p> {{ exchangeRate | currency}}</p>
+  </div>
+
+  <!-- Botão para exibir o histórico de preços dos últimos 30 dias -->
+  <div class="container row d-flex mt-3">
+    <div class="col-xs-6">
+      <strong>LAST 30 DAYS</strong>
+    </div>
+    <div class="d-flex col-xs-6 ml-auto plus">
+      <button (click)="historyPrice()" class="pointer">
+        +
+      </button>
+    </div>
+  </div>
+
+  <!-- Exibição do histórico de preços -->
+  <div class="content">
+    <div class="container d-flex border flex-column mt-5" *ngFor="let day of history">
+      <div class="d-flex ml-2 container">
+        <div class="col-xs-12 p-0 days">
+          <!-- Exibe a data no formato dd/MM/yyyy -->
+          <p>{{day.date | date: 'dd/MM/yyyy'}}</p>
+
+          <!-- Exibe as informações de abertura, alta, fechamento e baixa do dia -->
+          <div class="row">
+            <div class="col-xs-6">
+              Open: <span>{{day.open | currency}}</span>
+            </div>
+            <div class="col-xs-6 ml-5">
+              Hight: <span>{{day.high | currency}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 ">
+              Close: <span>{{day.close | currency}}</span>
+            </div>
+            <div class="col-xs-6 ml-5">
+              Low: <span>{{day.low | currency}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

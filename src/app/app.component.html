@@ -1,0 +1,47 @@
+<div class="container">
+  <app-header></app-header>
+<!-- Seleção da moeda -->
+  <div class="d-flex justify-content-center mt-4">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter the currency code</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="coin">
+        <mat-option *ngFor="let coin of coins" [value]="coin.value">
+          {{coin.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Botão de troca -->
+  <div class="d-flex justify-content-center buttonaction exchange">
+    <button type="submit" (click)="showValue(selectedValue)">
+      Exchange result
+    </button>
+  </div>
+
+  <!-- Detalhes da troca -->
+  <div *ngIf="showDetails">
+    <hr>
+
+    <div class="row">
+      <div class="col-xs-6 buttonBlue">
+        <strong>Exchange rate now</strong>
+      </div>
+      <div class="col-xs-6 d-flex align-items-end ml-auto pair">
+        {{selectedValue || '-'}}/{{toSymbol || 'BRL'}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <!-- Exibe a última data e hora de atualização -->
+        {{lastUpdatedAt | date: 'dd/MM/yyyy HH:mm'}}
+      </div>
+    </div>
+
+    <!-- Componente de resultados -->
+    <app-results [exchangeRate]="exchangeRate"></app-results>
+  </div>
+
+  <!-- Rodapé -->
+  <app-footer></app-footer>
+</div>
